@@ -1,0 +1,122 @@
+@font-face {
+  font-family: 'AmazingGrotesk-Ultra';
+  src: url('../fonts/AmazingGrotesk-Ultra.eot');
+  src: url('../fonts/AmazingGrotesk-Ultra.woff2') format('woff2'),
+       url('../fonts/AmazingGrotesk-Ultra.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'icons';
+  src:
+    url('../fonts/icons.ttf?yv5d7e') format('truetype'),
+    url('../fonts/icons.woff?yv5d7e') format('woff'),
+    url('../fonts/icons.svg?yv5d7e#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$grotesk: 'AmazingGrotesk-Ultra' !default;
+$fira: 'Fira Sans', sans-serif !default;
+
+[class^="icon__"], [class*=" icon__"] {
+  font-family: 'icons' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+
+.icon__left:before {content: "\f060";}
+.icon__right:before {content: "\f061";}
+.icon__globe:before {content: "\f0ac";}
+.icon__envelope:before {content: "\f0e0";}
+.icon__double-right:before {content: "\f101";}
+.icon__double-down:before {content: "\f103";}
+.icon__caret:before {content: "\f107";}
+.icon__quote:before {content: "\f10d";}
+.icon__quote2:before {content: "\f10e";}
+.icon__facebook:before {content: "\f09a";}
+.icon__instagram:before {content: "\f16d";}
+.icon__twitter:before {content: "\f099";}
+.icon__youtube:before {content: "\f16a";}
+
+* {
+  outline: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: $fira;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
+  line-height: 24px;
+  overflow-x: hidden;
+  color: #191919;
+  background-color: #fff;
+
+  @include notebookDown {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  @include mobile {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+}
+
+a, button, .btn {
+  cursor: pointer;
+  text-decoration: none;
+  transition: .15s linear;
+}
+
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-family: $grotesk;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  &.default {
+    background-color: #f39c12;
+    color: #ffffff;
+    padding: 15px 30px;
+    border-radius: 25px;
+
+    &:hover {
+      background-color: #f1c40f;
+    }
+  }
+}
+
+.text {
+  &__left {
+    text-align: left;
+  }
+  &__right {
+    text-align: right;
+  }
+  &__center {
+    text-align: center;
+  }
+
+  @include tabletDown {
+    &__right--sm {
+      text-align: right;
+    }
+    &__center--sm {
+      text-align: center;
+    }
+  }
+}

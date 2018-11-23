@@ -1,0 +1,118 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  button {
+    font-family: $fira;
+  }
+
+  &__menu {
+    display: none;
+  }
+
+  &.open &__menu {
+    display: block;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 99;
+    overflow: hidden;
+  }
+}
+
+.selectbox {
+  position: relative;
+
+  .icon__caret {
+    display: block;
+    position: absolute;
+    font-size: 18px;
+    line-height: 20px;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+    color: #f18a15;
+    transform-origin: center center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &.open .icon__caret {
+    transform: rotate(180deg)
+  }
+
+  &__current {
+    display: block;
+    font-size: 18px;
+    line-height: 20px;
+    padding: 15px 30px;
+    text-align: center;
+    user-select: none;
+    background-color: #ffffff;
+    border-radius: 30px;
+    color: #191919;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  &__list {
+    position: absolute;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 0;
+    border-radius: 0px 0px 4px 4px;
+    top: 100%;
+    right: 30px;
+    left: 30px;
+    margin: 1px 0 0;
+    list-style: none;
+    list-style-image: none;
+    box-shadow: 0 3px 7px rgba(#191919,.25);
+    overflow: hidden;
+    display: none;
+
+    li {
+      display: block;
+      cursor: pointer;
+      padding: 10px 15px;
+      color: #191919;
+      text-align: center;
+      border-bottom: 1px solid rgba(#191919,.1);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &[data-display] {
+        display: none;
+      }
+
+      &:hover {
+        background-color: rgba(#191919,.1);
+      }
+      &.selected {
+        background-color: #f1c40f
+      }
+    }
+  }
+
+  &.open &__list {
+    display: block;
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
