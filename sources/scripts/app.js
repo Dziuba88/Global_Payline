@@ -16,4 +16,8 @@ $(document).ready(function () {
     responsiveRefreshRate: 0
   });
   $('select').niceSelect();
+
+  $('input').on('focus', function () {
+    $(this).parent('.form__row').removeClass('error success')
+  })
 });

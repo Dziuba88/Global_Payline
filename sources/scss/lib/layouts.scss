@@ -636,7 +636,7 @@
     position: relative;
     z-index: 0;
 
-    &:before {
+    /*&:before {
       display: block;
       content: '';
       position: absolute;
@@ -650,20 +650,24 @@
       @include tabletDown {
         display: none;
       }
-    }
+    }*/
 
     img {
       display: block;
       position: absolute;
-      top: 40px;
+      top: -20px;
       right: 0;
       max-width: 100%;
-
-      @include tabletDown {
+      @include notebookDown {
+        position: static;
+        margin: 0 auto;
+        max-width: 80%;     
+      }
+      /*@include tabletDown {
         position: static;
         margin: 0 auto -120px;
         max-width: 80%;  
-      }
+      }*/
     }
 
     @include notebookDown {
@@ -673,6 +677,38 @@
 
       img {
         top: 50px;
+      }
+    }
+  }
+
+  &--list {
+    &.offset {
+      padding-top: 40px;
+    }
+    .list__item {
+      margin-bottom: 30px;
+      position: relative;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: -75px;
+
+        @include mobile {
+          display: none;
+        }
+      }
+
+      strong {
+        font-family: $grotesk;
+        font-size: 20px;
+        line-height: 1;
+        color: #2ecc71;
+
+        span {
+          color: #e6e6e6;
+        }
+  
       }
     }
   }
@@ -732,12 +768,32 @@
   &--text {
     padding-top: 24px;
     padding: 40px 97px 20px;
+    @include notebookDown {
+      padding: 40px 67px 20px;
+    }
     @include mobile {
       padding: 30px 17px 20px;
     }
     p {
       margin: 0 0 20px;
       text-align: justify;
+    }
+
+    h3 {
+      font-family: $grotesk;
+      font-size: 20px;
+      line-height: 1;
+      margin: 30px 0;
+    }
+  }
+  &--list p {
+    text-align: left;
+    padding-left: 33px;
+
+    strong {
+      font-family: $grotesk;
+      margin-left: -33px;
+      color: #f1c40f;
     }
   }
   &--footer {
@@ -1023,7 +1079,21 @@
     .form__row {
       margin-bottom: 20px;
       position: relative;
-      z-index: 2;
+      //z-index: 2;
+
+      svg {
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        right: 15px;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+        opacity: 0;
+        transform: scale(0);
+        transition: .15s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        fill: #2ecc71
+      }
 
       input {
         display: block;
@@ -1031,23 +1101,45 @@
         font-size: 18px;
         font-weight: 400;
         line-height: 20px;
-        text-align: center;
-        box-shadow: none !important;
+        text-align: left;
+        box-shadow: none;
         border: none;
-        padding: 15px;
+        padding: 15px 30px;
         background-color: #ffffff;
         border-radius: 30px;
         color: #191919;
+        position: relative;
+        z-index: 1;
 
-        &::-webkit-input-placeholder {color: #191919;transition: all .25s linear;opacity: 1;}
-        &::-moz-placeholder {color: #191919;transition: all .25s linear;opacity: 1;}
-        &:-ms-input-placeholder {color: #191919;transition: all .25s linear;opacity: 1;}
-        &:-moz-placeholder {color: #191919;transition: all .25s linear;opacity: 1;}
+        &::-webkit-input-placeholder {color: #b2b2b2;transition: all .25s linear;opacity: 1;}
+        &::-moz-placeholder {color: #b2b2b2;transition: all .25s linear;opacity: 1;}
+        &:-ms-input-placeholder {color: #b2b2b2;transition: all .25s linear;opacity: 1;}
+        &:-moz-placeholder {color: #b2b2b2;transition: all .25s linear;opacity: 1;}
 
         &:focus::-webkit-input-placeholder {opacity: 0;}
         &:focus::-moz-placeholder {opacity: 0;}
         &:focus:-ms-input-placeholder {opacity: 0;}
         &:focus:-moz-placeholder {opacity: 0;}
+
+        &:focus {
+          box-shadow: 0 0 20px 4px rgba(#f39c12, .5);
+        }
+      }
+
+      &.success svg {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      &.error {
+        input {
+          box-shadow: 0 0 20px 4px rgba(#ff4141, .5);
+          color: #ff4141;
+          &::-webkit-input-placeholder {color: #ff4141;}
+          &::-moz-placeholder {color: #ff4141;}
+          &:-ms-input-placeholder {color: #ff4141;}
+          &:-moz-placeholder {color: #ff4141;}
+        }
       }
     }
 

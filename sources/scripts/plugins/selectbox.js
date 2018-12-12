@@ -51,6 +51,7 @@
     });
 
     function create_nice_select($select) {
+      
       $select.after($('<div></div>')
         .addClass('selectbox')
         .addClass($select.attr('class') || '')
@@ -62,8 +63,9 @@
       var $dropdown = $select.next();
       var $options = $select.find('option');
       var $selected = $select.find('option:selected');
-
+      var selectedID = $select.val()
       $dropdown.find('.selectbox__current').html($selected.data('display') || $selected.text());
+      $dropdown.find('.selectbox__current').attr('data-value', selectedID);
 
       $options.each(function (i) {
         var $option = $(this);
@@ -117,7 +119,9 @@
       $option.addClass('selected');
 
       var text = $option.data('display') || $option.text();
+      var selectedID = $option.data('value')
       $dropdown.find('.selectbox__current').text(text);
+      $dropdown.find('.selectbox__current').attr('data-value', selectedID);
 
       $dropdown.prev('select').val($option.data('value')).trigger('change');
     });

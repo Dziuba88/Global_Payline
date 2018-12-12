@@ -20,6 +20,11 @@
 
 .selectbox {
   position: relative;
+  z-index: 1;
+
+  &.open {
+    z-index: 99;
+  }
 
   .icon__caret {
     display: block;
@@ -44,7 +49,7 @@
     font-size: 18px;
     line-height: 20px;
     padding: 15px 30px;
-    text-align: center;
+    text-align: left;
     user-select: none;
     background-color: #ffffff;
     border-radius: 30px;
@@ -52,6 +57,10 @@
     position: relative;
     z-index: 1;
     cursor: pointer;
+
+    &[data-value="0"] {
+      color: #b2b2b2 !important;
+    }
   }
 
   &__list {

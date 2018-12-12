@@ -110,6 +110,9 @@ a, button, .btn {
   &__center {
     text-align: center;
   }
+  &__upper {
+    text-transform: uppercase;
+  }
 
   @include tabletDown {
     &__right--sm {
